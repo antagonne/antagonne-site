@@ -52,3 +52,9 @@ a {
 div.links {
 	margin-left: 40px;
 }
+
+iframe {
+	width: 700px;
+	height: 600px;
+	margin: auto;
+}
