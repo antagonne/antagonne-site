@@ -8,7 +8,7 @@ body {
 }
 
 div.card {
-	width: 50%;
+	width: 1000px;
 	border: 1px solid #39FF14;
 	margin: auto;
 	align-items: center;
