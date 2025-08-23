@@ -39,8 +39,6 @@ div.photo {
 
 img.photo {
 	width: 50%;
-	
-	
 }
 
 p {
@@ -50,6 +48,7 @@ p {
 a {
 	font-family: "Determination Mono"; color: #D99541;
 }
+
 div.links {
 	margin-left: 40px;
 }
