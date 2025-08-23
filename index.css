@@ -3,7 +3,7 @@ body {
   background-size: cover; background-repeat: repeat;
 }
 
-.head-info {
+div.header {
   background-color: green;
   color: white;
   font-family: "Courier New", Courier, monospace;
