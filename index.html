@@ -10,7 +10,8 @@
     }
     table {
       border-collapse: collapse;
-      width: 60%;
+      width: 80%;
+      margin-bottom: 20px;
     }
     th, td {
       border: 1px solid #ccc;
@@ -21,8 +22,12 @@
       width: 100px;
     }
     .result {
-      margin-top: 20px;
       font-weight: bold;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 8px 12px;
+      margin-right: 10px;
     }
   </style>
 </head>
@@ -46,6 +51,21 @@
   </table>
 
   <div class="result" id="output"></div>
+
+  <table id="resultsTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Max Score</th>
+        <th>Score</th>
+        <th>Percentage</th>
+        <th>Grade</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <button onclick="exportToExcel()">Export to Excel</button>
 
   <script>
     function calculateGrade() {
@@ -82,6 +102,30 @@
       else grade = 'E';
 
       output.textContent = `${name}'s Grade: ${grade} — Percentage: ${percentage.toFixed(2)}%`;
+
+      const table = document.getElementById('resultsTable').getElementsByTagName('tbody')[0];
+      const newRow = table.insertRow();
+      newRow.innerHTML = `
+        <td>${name}</td>
+        <td>${max}</td>
+        <td>${score}</td>
+        <td>${percentage.toFixed(2)}%</td>
+        <td>${grade}</td>
+      `;
+
+      // Clear inputs
+      document.getElementById('studentName').value = '';
+      document.getElementById('studentScore').value = '';
+    }
+
+    function exportToExcel() {
+      const table = document.getElementById('resultsTable');
+      const html = table.outerHTML.replace(/ /g, '%20');
+
+      const a = document.createElement('a');
+      a.href = 'data:application/vnd.ms-excel,' + html;
+      a.download = 'grades.xls';
+      a.click();
     }
   </script>
 
