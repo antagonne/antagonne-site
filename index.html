@@ -10,15 +10,15 @@
     }
     table {
       border-collapse: collapse;
-      width: 50%;
+      width: 60%;
     }
     th, td {
       border: 1px solid #ccc;
       padding: 10px;
       text-align: center;
     }
-    input[type="number"] {
-      width: 80px;
+    input[type="number"], input[type="text"] {
+      width: 100px;
     }
     .result {
       margin-top: 20px;
@@ -32,11 +32,13 @@
 
   <table>
     <tr>
+      <th>Student Name</th>
       <th>Max Score</th>
       <th>Student Score</th>
       <th>Calculate</th>
     </tr>
     <tr>
+      <td><input type="text" id="studentName" placeholder="Enter name"></td>
       <td><input type="number" id="maxScore" value="100"></td>
       <td><input type="number" id="studentScore"></td>
       <td><button onclick="calculateGrade()">Grade</button></td>
@@ -47,9 +49,15 @@
 
   <script>
     function calculateGrade() {
+      const name = document.getElementById('studentName').value.trim();
       const max = parseFloat(document.getElementById('maxScore').value);
       const score = parseFloat(document.getElementById('studentScore').value);
       const output = document.getElementById('output');
+
+      if (!name) {
+        output.textContent = "Please enter the student's name.";
+        return;
+      }
 
       if (isNaN(max) || isNaN(score) || max <= 0 || score < 0) {
         output.textContent = "Please enter valid numbers.";
@@ -59,13 +67,21 @@
       const percentage = (score / max) * 100;
       let grade = '';
 
-      if (percentage >= 90) grade = 'A';
-      else if (percentage >= 80) grade = 'B';
-      else if (percentage >= 70) grade = 'C';
-      else if (percentage >= 60) grade = 'D';
+      if (percentage >= 97) grade = 'A+';
+      else if (percentage >= 93) grade = 'A';
+      else if (percentage >= 90) grade = 'A-';
+      else if (percentage >= 87) grade = 'B+';
+      else if (percentage >= 83) grade = 'B';
+      else if (percentage >= 80) grade = 'B-';
+      else if (percentage >= 77) grade = 'C+';
+      else if (percentage >= 73) grade = 'C';
+      else if (percentage >= 70) grade = 'C-';
+      else if (percentage >= 67) grade = 'D+';
+      else if (percentage >= 63) grade = 'D';
+      else if (percentage >= 60) grade = 'D-';
       else grade = 'E';
 
-      output.textContent = `Percentage: ${percentage.toFixed(2)}% — Grade: ${grade}`;
+      output.textContent = `${name}'s Grade: ${grade} — Percentage: ${percentage.toFixed(2)}%`;
     }
   </script>
 
