@@ -1,0 +1,37 @@
+
+body {
+	background-image: url("assets/background.gif");
+	background-size: cover; background-repeat: repeat;
+}
+
+h1 {
+	font-family: "Courier"; color: #39FF14;
+	font-size: 50px;
+	margin: 20px;
+}
+
+div.links {
+	font-family: "Courier";
+	font-size: 26px;
+	margin: 20px;
+	color: #ff9933;
+}
+
+a {
+	color: #ff9933;
+	border: 2px solid #ff9933
+}
+
+a:visited {
+	color: #ff9933;
+}
+
+a:hover {
+	color: #FFA500;
+}
+
+p {
+	font-family: "Courier"; color: #39FF14;
+	font-size: 20px;
+	margin: 20px;
+}
